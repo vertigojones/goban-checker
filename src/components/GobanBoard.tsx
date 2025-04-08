@@ -1,53 +1,10 @@
 import { useState } from "react"
+import { isTaken } from "../utils/isTaken"
 import { defaultBoard } from "../mocks/boards"
 
 // Allow an optional custom board to be passed in as a prop
 interface GobanBoardProps {
   board?: Stone[][]
-}
-
-// Determine if a stone is captured (i.e., completely surrounded with no liberties)
-const isTaken = (board: Stone[][], x: number, y: number): boolean => {
-  const height = board.length
-  const width = board[0].length
-  const target = board[y][x]
-
-  if (target === "." || !["B", "W"].includes(target)) return false
-
-  const visited = new Set<string>()
-  const stack: [number, number][] = [[x, y]]
-
-  while (stack.length > 0) {
-    const [cx, cy] = stack.pop()!
-    const key = `${cx},${cy}`
-
-    if (visited.has(key)) continue
-    visited.add(key)
-
-    const directions = [
-      [0, -1],
-      [0, 1],
-      [-1, 0],
-      [1, 0],
-    ]
-
-    for (const [dx, dy] of directions) {
-      const nx = cx + dx
-      const ny = cy + dy
-
-      if (nx < 0 || ny < 0 || ny >= height || nx >= width) continue
-
-      const neighbour = board[ny][nx]
-
-      if (neighbour === ".") {
-        return false // liberty found
-      } else if (neighbour === target) {
-        stack.push([nx, ny]) // continue exploring connected stones
-      }
-    }
-  }
-
-  return true // no liberties found
 }
 
 const GobanBoard: React.FC<GobanBoardProps> = ({ board = defaultBoard }) => {
