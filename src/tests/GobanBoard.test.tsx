@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import GobanBoard from "../components/GobanBoard"
 import {
+  defaultBoard,
   boardWithLiberty,
   surroundedBlackGroup,
   blackGroupWithLiberty,
@@ -15,7 +16,7 @@ describe("GobanBoard feature", () => {
   defineFeature(feature, (test) => {
     test("Detect a captured white stone", ({ given, when, then }) => {
       given("a 3x3 goban with a white stone surrounded by black stones", () => {
-        render(<GobanBoard />)
+        render(<GobanBoard board={defaultBoard} />)
       })
 
       when("I click on the white stone", async () => {
