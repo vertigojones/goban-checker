@@ -1,26 +1,34 @@
 import { useState } from "react"
 
-const GobanBoard: React.FC = () => {
-  // TODO:
-  // - Render a 3x3 grid representing the goban
-  // - Allow clicking on a cell to select it
-  // - Highlight the selected cell
-  // - Show whether the selected stone is captured (hardcoded at first)
+// Define the type for each stone on the board
+// "B" = black, "W" = white, "." = empty
+export type Stone = "B" | "W" | "."
 
-  const board = [
-    [".", "B", "."],
-    ["B", "W", "B"],
-    [".", "B", "."],
-  ]
+// Allow an optional custom board to be passed in as a prop
+// If not provided, we'll use a default layout
+interface GobanBoardProps {
+  board?: Stone[][]
+}
 
+// Default board used when no prop is provided
+const defaultBoard: Stone[][] = [
+  [".", "B", "."],
+  ["B", "W", "B"],
+  [".", "B", "."],
+]
+
+const GobanBoard: React.FC<GobanBoardProps> = ({ board = defaultBoard }) => {
+  // Track the selected cell, if any
   const [selected, setSelected] = useState<[number, number] | null>(null)
 
+  // When a button is clicked, remember the selected coordinates
   const handleClick = (x: number, y: number) => {
     setSelected([x, y])
   }
 
   return (
     <div>
+      {/* Render the board as rows of buttons */}
       <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
         {board.map((row, y) => (
           <div key={y} style={{ display: "flex", gap: 4 }}>
@@ -51,6 +59,7 @@ const GobanBoard: React.FC = () => {
         ))}
       </div>
 
+      {/* Show a message when a cell is selected (hardcoded capture for now) */}
       {selected && (
         <p data-testid="capture-message">
           Stone at ({selected[0]}, {selected[1]}) is <strong>captured</strong>.
