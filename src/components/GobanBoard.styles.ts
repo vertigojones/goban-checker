@@ -1,5 +1,13 @@
 import styled from "styled-components"
 
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+`
+
 export const BoardContainer = styled.div`
   padding: 1rem;
   background: #f9fafb;
@@ -43,6 +51,7 @@ export const BoardSelector = styled.div`
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
+  justify-content: center;
 `
 
 export const BoardButton = styled.button<{ active: boolean }>`
