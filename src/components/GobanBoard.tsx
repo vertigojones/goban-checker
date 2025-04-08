@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { isTaken } from "../utils/isTaken"
+import { getCellStyle } from "../utils/getCellStyle"
 import { defaultBoard } from "../mocks/boards"
 
 // Allow an optional custom board to be passed in as a prop
@@ -29,21 +30,10 @@ const GobanBoard: React.FC<GobanBoardProps> = ({ board = defaultBoard }) => {
               <button
                 key={`${x},${y}`}
                 onClick={() => handleClick(x, y)}
-                style={{
-                  width: 40,
-                  height: 40,
-                  backgroundColor:
-                    cell === "B"
-                      ? "black"
-                      : cell === "W"
-                      ? "white"
-                      : "lightgray",
-                  color: cell === "W" ? "black" : "white",
-                  border:
-                    selected?.[0] === x && selected?.[1] === y
-                      ? "2px solid blue"
-                      : "1px solid #ccc",
-                }}
+                style={getCellStyle(
+                  cell,
+                  selected?.[0] === x && selected?.[1] === y
+                )}
               >
                 {cell === "." ? "+" : ""}
               </button>
