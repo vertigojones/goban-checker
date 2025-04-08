@@ -82,16 +82,26 @@ describe("GobanBoard feature", () => {
       when,
       then,
     }) => {
+      const blackGroupWithLiberty: Stone[][] = [
+        ["W", "W", "."],
+        ["B", "B", "."],
+        ["W", "B", "W"],
+        [".", "W", "."],
+      ]
+
       given("a goban with a black group that has at least one liberty", () => {
-        throw new Error("Test not yet implemented")
+        render(<GobanBoard board={blackGroupWithLiberty} />)
       })
 
       when("I click on a black stone in the group", async () => {
-        throw new Error("Test not yet implemented")
+        const button = screen.getAllByRole("button")[4] // (1,1)
+        await userEvent.click(button)
       })
 
       then("I should see that it is not captured", () => {
-        throw new Error("Test not yet implemented")
+        expect(screen.getByTestId("capture-message")).toHaveTextContent(
+          "Stone at (1, 1) is not captured"
+        )
       })
     })
 
