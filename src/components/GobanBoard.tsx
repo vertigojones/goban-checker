@@ -52,7 +52,7 @@ const GobanBoard: React.FC = () => {
       </div>
 
       {selected && (
-        <p>
+        <p data-testid="capture-message">
           Stone at ({selected[0]}, {selected[1]}) is <strong>captured</strong>.
         </p>
       )}
