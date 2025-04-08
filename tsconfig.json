@@ -23,5 +23,5 @@
   "include": [
     "global.d.ts", 
     "src/**/*"
-  ]
+, "src/mocks"  ]
 }

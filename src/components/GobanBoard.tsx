@@ -1,16 +1,10 @@
 import { useState } from "react"
+import { defaultBoard } from "../mocks/boards"
 
 // Allow an optional custom board to be passed in as a prop
 interface GobanBoardProps {
   board?: Stone[][]
 }
-
-// Default board used when no prop is provided
-const defaultBoard: Stone[][] = [
-  [".", "B", "."],
-  ["B", "W", "B"],
-  [".", "B", "."],
-]
 
 // Determine if a stone is captured (i.e., completely surrounded with no liberties)
 const isTaken = (board: Stone[][], x: number, y: number): boolean => {

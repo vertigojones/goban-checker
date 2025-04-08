@@ -2,6 +2,12 @@ import { defineFeature, loadFeature } from "jest-cucumber"
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import GobanBoard from "../components/GobanBoard"
+import {
+  boardWithLiberty,
+  surroundedBlackGroup,
+  blackGroupWithLiberty,
+  squareGroupSurrounded,
+} from "../mocks/boards"
 
 const feature = loadFeature("./src/features/goban-capture.feature")
 
@@ -25,12 +31,6 @@ describe("GobanBoard feature", () => {
     })
 
     test("Detect a white stone with liberty", ({ given, when, then }) => {
-      const boardWithLiberty: Stone[][] = [
-        [".", ".", "."],
-        ["B", "W", "B"],
-        [".", ".", "."],
-      ]
-
       given(
         "a 3x3 goban with a white stone and at least one empty adjacent cell",
         () => {
@@ -51,13 +51,6 @@ describe("GobanBoard feature", () => {
     })
 
     test("Detect a black group that is captured", ({ given, when, then }) => {
-      const surroundedBlackGroup: Stone[][] = [
-        ["W", "W", "."],
-        ["B", "B", "W"],
-        ["W", "B", "W"],
-        [".", "W", "."],
-      ]
-
       given(
         "a goban with a black group completely surrounded by white stones",
         () => {
@@ -82,13 +75,6 @@ describe("GobanBoard feature", () => {
       when,
       then,
     }) => {
-      const blackGroupWithLiberty: Stone[][] = [
-        ["W", "W", "."],
-        ["B", "B", "."],
-        ["W", "B", "W"],
-        [".", "W", "."],
-      ]
-
       given("a goban with a black group that has at least one liberty", () => {
         render(<GobanBoard board={blackGroupWithLiberty} />)
       })
@@ -110,13 +96,6 @@ describe("GobanBoard feature", () => {
       when,
       then,
     }) => {
-      const squareGroupSurrounded: Stone[][] = [
-        ["W", "W", "."],
-        ["B", "B", "W"],
-        ["B", "B", "W"],
-        ["W", "W", "."],
-      ]
-
       given(
         "a goban with a square-shaped black group completely surrounded",
         () => {
