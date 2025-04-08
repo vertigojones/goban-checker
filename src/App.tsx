@@ -1,6 +1,6 @@
-import GobanBoard from "./GobanBoard"
+import GobanBoard from "./components/GobanBoard"
 
-function App() {
+const App = () => {
   return <GobanBoard />
 }
 
