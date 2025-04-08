@@ -1,8 +1,5 @@
 import { useState } from "react"
 
-// Define the type for each stone on the board
-export type Stone = "B" | "W" | "."
-
 // Allow an optional custom board to be passed in as a prop
 interface GobanBoardProps {
   board?: Stone[][]

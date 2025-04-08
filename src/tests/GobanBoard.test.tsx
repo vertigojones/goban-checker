@@ -1,7 +1,7 @@
 import { defineFeature, loadFeature } from "jest-cucumber"
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import GobanBoard, { Stone } from "../components/GobanBoard"
+import GobanBoard from "../components/GobanBoard"
 
 const feature = loadFeature("./src/features/goban-capture.feature")
 
