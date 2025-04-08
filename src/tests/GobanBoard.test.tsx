@@ -38,9 +38,7 @@ describe("GobanBoard feature", () => {
       })
 
       then("I should see that it is not captured", () => {
-        expect(screen.getByTestId("capture-message")).toHaveTextContent(
-          "Stone at (1, 1) is not captured"
-        )
+        throw new Error("Test not yet implemented")
       })
     })
 
@@ -48,16 +46,16 @@ describe("GobanBoard feature", () => {
       given(
         "a goban with a black group completely surrounded by white stones",
         () => {
-          // TODO: render GobanBoard with surrounded black group
+          throw new Error("Test not yet implemented")
         }
       )
 
       when("I click on a black stone in the group", async () => {
-        // TODO: simulate click on a black stone in the group
+        throw new Error("Test not yet implemented")
       })
 
       then("I should see that it is captured", () => {
-        // TODO: assert the stone is captured
+        throw new Error("Test not yet implemented")
       })
     })
 
@@ -67,15 +65,15 @@ describe("GobanBoard feature", () => {
       then,
     }) => {
       given("a goban with a black group that has at least one liberty", () => {
-        // TODO: render GobanBoard with black group and liberty
+        throw new Error("Test not yet implemented")
       })
 
       when("I click on a black stone in the group", async () => {
-        // TODO: simulate click on a black stone in the group
+        throw new Error("Test not yet implemented")
       })
 
       then("I should see that it is not captured", () => {
-        // TODO: assert the stone is not captured
+        throw new Error("Test not yet implemented")
       })
     })
 
@@ -87,16 +85,16 @@ describe("GobanBoard feature", () => {
       given(
         "a goban with a square-shaped black group completely surrounded",
         () => {
-          // TODO: render GobanBoard with square-shaped group surrounded
+          throw new Error("Test not yet implemented")
         }
       )
 
       when("I click on any black stone in the group", async () => {
-        // TODO: simulate click on any black stone in the square
+        throw new Error("Test not yet implemented")
       })
 
       then("I should see that it is captured", () => {
-        // TODO: assert that the stone is captured
+        throw new Error("Test not yet implemented")
       })
     })
   })
