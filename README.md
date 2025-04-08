@@ -1,46 +1,67 @@
-# Getting Started with Create React App
+# Goban Capture Checker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a React + TypeScript implementation of a Go (Baduk) stone capture visualiser and validator.
 
-## Available Scripts
+👉 **Repo:** [github.com/vertigojones/goban-checker](https://github.com/vertigojones/goban-checker)
 
-In the project directory, you can run:
+## 📚 Background
 
-### `npm start`
+The original version of this logic was written in **Python**, with tests verifying capture mechanics on small Go boards. Rather than building on top of that, I decided to convert the core logic into a **fully interactive React application**, written entirely in **TypeScript**.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This shift allowed me to:
+- ✅ Build a visual, testable representation of the game board
+- ✅ Apply a TDD approach using **Cucumber** and **React Testing Library**
+- ✅ Explore dynamic board interactions using `useState` and props
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🔧 Tech Stack
 
-### `npm test`
+- **React** with **TypeScript**
+- **styled-components** for component-based styling
+- **jest-cucumber** for BDD-style tests
+- **@testing-library/react** for DOM-based assertions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛑 Why not Next.js?
 
-### `npm run build`
+Although I’ve used Next.js in other projects, I chose **not** to use it here for a few key reasons:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- The project doesn’t require routing, server-side rendering, or API endpoints
+- Keeping things lightweight makes it easier to run, test, and share
+- This is a pure frontend tool focused on interactivity and logic, not content delivery
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+That said, this could easily be converted to a Next.js app in the future if needed.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🎯 Features
 
-### `npm run eject`
+- Switch between multiple predefined board setups
+- Click any stone to check if it's captured
+- See visual feedback on stone selection
+- Cucumber tests validate each capture scenario
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 📁 Structure
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `components/GobanBoard.tsx` – main interactive board logic
+- `utils/isTaken.ts` – logic for determining if a group is captured
+- `mocks/boards.ts` – reusable mock board setups
+- `tests/` – cucumber test bindings
+- `features/` – cucumber-style `.feature` file
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 🚀 Running the Project
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+npm install
+npm start
+```
 
-## Learn More
+## 🧪 Running Tests
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm test
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
+
+Want to contribute or fork it? Be my guest!
+
+---
+
+_Owen Liversidge – 2025_
