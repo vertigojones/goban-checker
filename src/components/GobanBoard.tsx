@@ -26,18 +26,19 @@ const GobanBoard: React.FC<GobanBoardProps> = ({ board = defaultBoard }) => {
       <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
         {board.map((row, y) => (
           <div key={y} style={{ display: "flex", gap: 4 }}>
-            {row.map((cell, x) => (
-              <button
-                key={`${x},${y}`}
-                onClick={() => handleClick(x, y)}
-                style={getCellStyle(
-                  cell,
-                  selected?.[0] === x && selected?.[1] === y
-                )}
-              >
-                {cell === "." ? "+" : ""}
-              </button>
-            ))}
+            {row.map((cell, x) => {
+              const isSelected = selected?.[0] === x && selected?.[1] === y
+
+              return (
+                <button
+                  key={`${x},${y}`}
+                  onClick={() => handleClick(x, y)}
+                  style={getCellStyle(cell, isSelected)}
+                >
+                  {cell === "." ? "+" : ""}
+                </button>
+              )
+            })}
           </div>
         ))}
       </div>
