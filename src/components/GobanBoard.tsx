@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { isTaken } from "../utils/isTaken"
-import { getCellStyle } from "../utils/getCellStyle"
 import { defaultBoard } from "../mocks/boards"
+import { Board, Row, Cell, Message } from "./GobanBoard.styles"
 
 // Allow an optional custom board to be passed in as a prop
 interface GobanBoardProps {
@@ -23,32 +23,33 @@ const GobanBoard: React.FC<GobanBoardProps> = ({ board = defaultBoard }) => {
   return (
     <div>
       {/* Render the board as rows of buttons */}
-      <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+      <Board>
         {board.map((row, y) => (
-          <div key={y} style={{ display: "flex", gap: 4 }}>
+          <Row key={y}>
             {row.map((cell, x) => {
               const isSelected = selected?.[0] === x && selected?.[1] === y
 
               return (
-                <button
+                <Cell
                   key={`${x},${y}`}
                   onClick={() => handleClick(x, y)}
-                  style={getCellStyle(cell, isSelected)}
+                  stone={cell}
+                  selected={isSelected}
                 >
                   {cell === "." ? "+" : ""}
-                </button>
+                </Cell>
               )
             })}
-          </div>
+          </Row>
         ))}
-      </div>
+      </Board>
 
       {/* Show capture status after a stone is selected */}
       {selected && (
-        <p data-testid="capture-message">
+        <Message data-testid="capture-message">
           Stone at ({selected[0]}, {selected[1]}) is{" "}
           <strong>{captured ? "captured" : "not captured"}</strong>.
-        </p>
+        </Message>
       )}
     </div>
   )
