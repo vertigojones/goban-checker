@@ -110,19 +110,29 @@ describe("GobanBoard feature", () => {
       when,
       then,
     }) => {
+      const squareGroupSurrounded: Stone[][] = [
+        ["W", "W", "."],
+        ["B", "B", "W"],
+        ["B", "B", "W"],
+        ["W", "W", "."],
+      ]
+
       given(
         "a goban with a square-shaped black group completely surrounded",
         () => {
-          throw new Error("Test not yet implemented")
+          render(<GobanBoard board={squareGroupSurrounded} />)
         }
       )
 
       when("I click on any black stone in the group", async () => {
-        throw new Error("Test not yet implemented")
+        const button = screen.getAllByRole("button")[3] // (0,1)
+        await userEvent.click(button)
       })
 
       then("I should see that it is captured", () => {
-        throw new Error("Test not yet implemented")
+        expect(screen.getByTestId("capture-message")).toHaveTextContent(
+          "Stone at (0, 1) is captured"
+        )
       })
     })
   })
